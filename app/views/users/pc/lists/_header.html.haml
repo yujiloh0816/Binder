@@ -1,0 +1,16 @@
+.pcHeader
+  .container
+    .pcHeader_contents
+      .pcHeader_contents_logo
+        = link_to image_tag('/Binder-logo-white.png', {:class=>'logo'}), users_pc_root_path
+      .pcHeader_contents_devise
+        = link_to '#' do
+          %i.fas.fa-sign-in-alt.icon<>
+            Log in
+        = link_to '#' do
+          %i.fas.fa-user-plus.icon<>
+            Sign up
+        -# login時に表示 if文で記述する
+        -# = link_to '#' do
+          %i.fas.fa-sign-out-alt.icon<>
+            Log out

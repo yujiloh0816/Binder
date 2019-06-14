@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   namespace :users do
     namespace :pc do
       root to: 'top#index'
+      resources :lists, only: [:index, :show, :destroy]
     end
   end
 

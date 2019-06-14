@@ -1,0 +1,112 @@
+$main_color: #0E1A2E;
+
+
+// Header用
+
+.pcHeader {
+  .container {
+    // top用のCSSが邪魔するからオーバーライド
+    width: 100%;
+    .pcHeader_contents {
+      position: fixed;
+      z-index: 100;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 50px;
+      background-color: $main_color;
+      height: 70px;
+      &_logo {
+        .logo{
+          height: 80px;
+        }
+      }
+      &_devise{
+        margin: auto 0;
+        a {
+          color: #FAFAFA;
+          margin-left: 30px;
+        }
+      }
+    }
+  }
+}
+
+//
+
+.pcMenubar {
+  .container {
+    // top用のCSSが邪魔するからオーバーライド
+    position: fixed;
+    overflow: scroll;
+    top: 70px;
+    width: 300px;
+    margin-left: 0;
+    border-right: 1px solid #c2c2c6;
+    background-color: #f7f7f7;
+  }
+
+  &_contents {
+    margin: 0 20px;
+    text-align: center;
+    height: calc(100vh - 70px);
+
+    &_top {
+      .btn-square-shadow {
+        margin: 40px auto;
+        display: inline-block;
+        padding: 10px 40px;
+        text-decoration: none;
+        background: #668ad8;
+        /*ボタン色*/
+        color: #FFF;
+        border-bottom: solid 3px #627295;
+        border-radius: 50px;
+      }
+
+      &:active {
+        /*ボタンを押したとき*/
+        -webkit-transform: translateY(4px);
+        transform: translateY(3px);
+        /*下に動く*/
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+        /*影を小さく*/
+        border-bottom: none;
+      }
+    }
+
+    &_lists ul {
+      padding: 0;
+
+      li {
+        text-align: left;
+        color: #404040;
+        border-left: solid 6px $main_color;
+        /*左側の線*/
+        border-bottom: solid 2px #dadada;
+        /*下に灰色線*/
+        background: whitesmoke;
+        margin-bottom: 5px;
+        /*下のバーとの余白*/
+        line-height: 1.5;
+        padding: 0.5em;
+        list-style-type: none!important;
+        /*ポチ消す*/
+        font-weight: bold;
+
+        &:hover {
+          background: #DCDCDC;
+        }
+      }
+
+      .list_title {
+        position: sticky;
+        top: 0;
+      }
+
+      .list {
+        margin-left: 10px;
+      }
+    }
+  }
+}
