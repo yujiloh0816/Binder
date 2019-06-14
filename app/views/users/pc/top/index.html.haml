@@ -1,0 +1,143 @@
+.pcTopPage
+  %header
+    .container.clearfix
+      = link_to image_tag('/Binder-logo-white.png', { :class => 'logo' }), users_pc_root_path
+      .menu_box
+        %span.list_bar
+        %span.list_bar
+        %span.list_bar
+      %nav
+        %ul.nav
+          %li.nav_list
+            %a{ :href => '#concept' }
+              Concept
+          %li.nav_list
+            %a{ :href => '#feature' }
+              Feature
+          %li.nav_list
+            %a{ :href => '#profile' }
+              Profile
+          %li.nav_list
+            %a{ :href => '#contact' }
+              %i.fas.fa-sign-in-alt.icon<>
+                LogIn
+
+  %section#mv
+    .mv
+      .container
+        %h1.mv_title
+          あいまに営業リストを精査しよう
+        %p.mv_text
+          To streamline the choosing of companies
+
+  %section#concept
+    .container
+      %h2.heading
+        Concept
+      %p.heading_text
+        Binder（バインダー）は、ユーザーが定量データによってセグメントを分けて作成した営業リストから
+        %br
+        サイトのファーストビューという定量データだけでは測れないデータを加えることで
+        %br.sp_none
+        成約確度の高いアカウントの精査を強力にサポートするクラウドサービスです。
+
+      .production.clearfix
+        .production_box.bg_1.sp_none
+        .production_box.bg_2
+        .production_box.bg_3.sp_none
+        .production_box.bg_4
+        .production_box.bg_5.sp_none
+        .production_box.bg_6
+
+  %section#feature
+    .container
+      %h2.heading
+        Feature
+      %p.heading_text
+        営業マンの時間移動などあいま時間に手軽にリストを精査
+        %br
+        データだけでは、見えない可能性をサイトのファーストビューで確認でき個人の嗅覚を活かせる。
+        %br.sp_none
+        また、営業マン同士のマッチングにより営業したい企業とのコネクションを持つことができる。
+      .strength.clearfix
+        .strength_box
+          %i.far.fa-file{ :areia-hidden => true }
+          %h3.strength_title
+            CSV形式ファイルの出入力
+          %p.strength_text
+            CSV形式よりインポートしたリストをもとに、スマートフォンよりリストを精査することが可能です。また、精査したデータをCSV形式でエクスポートすることも可能です。
+        .strength_box
+          %i.fas.fa-mobile-alt{ :areia-hidden => true }
+          %h3.strength_title
+            スマートフォンのUXに特化
+          %p.strength_text
+            パソコンからCSV形式で読み込んだデータをもとにスマートフォンより精査できます。読み込んだ企業のホームページのファーストビューが表示されます。スワイプによって直感的にリストの精査できます。
+        .strength_box
+          %i.far.fa-comments{ :areia-hidden => true }
+          %h3.strength_title
+            マッチングによる新規営業
+          %p.strength_text
+            お互いの会社に対してGoodをしたユーザー同士でチャットすることが可能です。サービスの直接の決済者、担当者にはなりずらいですが、営業したい企業とのつながりをもてます。
+
+  %section#profile
+    .container
+      %h2.heading
+        Profile
+      %p.heading_text
+        20歳から営業の仕事を始め複数の会社で営業職を経験
+        %br
+        営業効率の最大化をするために定形業務の単純化、自動化に興味をもちエンジニアへの転職を決意
+        %br.sp_none
+        2019年4月からDMM WebCampでプログラミングを学習中
+      .profile.clearfix
+        .profile_content1
+          .my_face
+        .profile_content2
+          %h3.discription_title
+            MyName
+          %p.discription_text
+            ふじわら　ゆうじろう
+            %br
+            大阪府出身　1991年生まれ
+            %br
+            同志社大学卒業
+
+          %h3.discription_title
+            MySkills
+          %p.discription_text
+            HTML/HAML/CSS/SCSS/
+            %br
+            JavaScript/JQuery/GoogleAppScripts
+            %br
+            Ruby/RubyOnRails/Linux/SQL
+
+  %section#contact
+    .container
+      %h2.heading
+        Contact
+      %p.heading_text
+        It is a long established fact that a reader will be distracted by the readable
+        %br
+        content of a page when looking at its layout.
+        %br.sp_none
+        The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters
+      .contact.clearfix
+        .contact_content1
+          %h3.discription_title
+            Mail
+          %a.discription_text.link_text{ :href => 'mail:aaa@example.com'}
+            aaa@example.com
+          %h3.discription_title
+            Tell
+          %a.discription_text.link_text{ :href => 'tel:09012345678'}
+            090-1234-5678
+        .contact_content2
+          %h3.discription_title
+            SNS
+          %i.fa.fa-facebook.fa-5x{ :aria-hidden => true }
+          %i.fa.fa-twitter.fa-5x{ :aria-hidden => true }
+          %i.fa.fa-instagram.fa-5x{ :aria-hidden => true }
+
+  %footer
+    %p.copyright
+      ©︎ 2019 yujiro fujiwara

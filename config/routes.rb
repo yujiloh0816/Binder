@@ -5,4 +5,11 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
+
+  namespace :users do
+    namespace :pc do
+      root to: 'top#index'
+    end
+  end
+
 end
