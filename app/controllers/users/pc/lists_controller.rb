@@ -4,6 +4,30 @@ class Users::Pc::ListsController < Users::BaseController
   end
 
   def show
+    list = List.find(params[:id])
+    @inspections = list.inspections
+
+    # ToDo
+    # リファクタリングする
+    # @inspections.select do |inspection|
+    #   inspection.status == 'good'
+    #   # ToDo
+    #   # parameterでステータスを受け取れるようにする。
+    #   # if params[:status] == 0 || 1 || 2
+    #   #   inspection.status == params[:status]
+    #   # else
+    #   #   render 'show'
+    #   # end
+    # end
+    goods = @inspections.pluck(:company_id)
+    # goods = good_inspections.pluck(:company_id)
+
+    companies = Company.where(id: goods)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data companies.to_csv }
+    end
   end
 
   def create

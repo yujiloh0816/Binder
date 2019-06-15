@@ -1,2 +1,23 @@
-%h1 Users::Pc::Lists#show
-%p Find me in app/views/users/pc/lists/show.html.haml
+.pcShowPage
+  .container
+    %p
+      Download:
+      = link_to "CSV", users_pc_list_path(params[:id], format: "csv")
+
+    .table
+      %table
+        %tr
+          %th id
+          %th name
+          %th url
+          %th status
+        - @inspections.each do |inspection|
+          %tr
+            %td
+              = inspection.id
+            %td
+              = inspection.company.name
+            %td
+              = link_to inspection.company.domain, inspection.company.domain
+            %td
+              = inspection.status
