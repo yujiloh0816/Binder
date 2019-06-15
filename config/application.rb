@@ -21,6 +21,14 @@ module Binder
       g.skip_routes true
     end
 
+    config.generators do |g|
+      g.test_framework :rspec,
+      fixtures: true,
+      view_spec: false,
+      helper_spec: false,
+      routing_specs: false
+    end
+
     # 表示時のタイムゾーンをJSTに設定
     config.time_zone = 'Tokyo'
     # DB保存時のタイムゾーンをJSTに設定
