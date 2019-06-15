@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+belongs_toによるバリデーション
+optional: trueで回避

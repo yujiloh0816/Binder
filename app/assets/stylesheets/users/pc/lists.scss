@@ -1,0 +1,43 @@
+.pcIndexPage {
+  padding-top: 100px;
+  padding-left: 330px;
+  padding-right: 30px;
+  width: auto;
+
+  .container {
+    width: 100%;
+
+    h1, p {
+      text-align: center;
+      overflow-wrap: break-word;
+    }
+
+    ul {
+      li {
+
+      }
+    }
+
+    form {
+      .field {
+        margin: 12px 0;
+      }
+
+      .buttons {
+        margin: 12px 0;
+      }
+    }
+  }
+}
+
+.pcShowPage {
+  padding-top: 100px;
+  padding-left: 330px;
+  padding-right: 30px;
+  width: auto;
+
+    .container {
+      width: 100%;
+  }
+
+}
