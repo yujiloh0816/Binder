@@ -4,7 +4,8 @@ class Company < ApplicationRecord
 
   def self.import(file, list_id)
     CSV.foreach(file.path, headers: true) do |row|
-      company = self.find_or_initialize_by(domain: row["domain"])
+      domain = row["domain"].slice(/https?:\/\/[^\/]+\//)
+      company = self.find_or_initialize_by(domain: domain)
       company.attributes = row.to_hash
       company.save!
 
