@@ -10,20 +10,7 @@ Rails.application.routes.draw do
   namespace :users do
     namespace :pc do
       root to: 'top#index'
-
-      resources :lists, only: [:index, :show, :destroy] do
-        # ToDo
-        # on: :memberにする必要があるけど
-        # lists/:idをどうつくるかが課題
-        # /users/pc/lists/:id/import(.:format)
-        # import_users_pc_list_path
-        # post :import, on: :member
-        
-        # import_users_pc_lists_path
-        post :import, on: :collection
-
-      end
-
+      resources :lists, only: [:index, :show, :create, :destroy]
     end
   end
 
