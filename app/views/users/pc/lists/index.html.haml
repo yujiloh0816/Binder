@@ -31,9 +31,9 @@
       -# #       - @product_import.errors.full_messages.edo |msg|
       -# #         %li = msg
       = fields_for @list do |c|
-        = c.label :title
-        = c.text_field :title
-
+        .list_title
+          = c.text_field :title,  placeholder: "タイトル"
+          %i.far.fa-file.icon
       .field
         = f.file_field :file
       .buttons
