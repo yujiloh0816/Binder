@@ -1,0 +1,177 @@
+$main_color: #0E1A2E;
+
+.pcIndexPage {
+  padding-top: 100px;
+  padding-left: 330px;
+  padding-right: 30px;
+  width: auto;
+
+  .container {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    h1,
+    p {
+      text-align: center;
+      overflow-wrap: break-word;
+    }
+
+    h1.head {
+      margin: 30px auto;
+    }
+
+    table {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      width: 100%;
+      border-collapse: collapse;
+
+      tr {
+        text-align: left;
+
+        .name {
+          width: 40%;
+        }
+
+        .domain {
+          width: 60%;
+        }
+
+        td,
+        th {
+          border: solid 1px black;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          padding-left: 10px;
+        }
+      }
+    }
+
+    form {
+      text-align: center;
+
+      .list_title {
+        position: relative;
+        width: 30%;
+        margin: 40px auto;
+
+        input[type=text] {
+          font: 15px/24px sans-serif;
+          box-sizing: border-box;
+          width: 100%;
+          margin: 8px 0;
+          padding: 0.3em;
+          transition: 0.3s;
+          border: 1px solid #1b2538;
+          border-radius: 4px;
+          outline: none;
+
+          &:focus {
+            border-color: $main_color;
+          }
+        }
+
+        input[type=text] {
+          padding-left: 40px;
+        }
+
+        i {
+          position: absolute;
+          top: 8px;
+          left: 0;
+          padding: 9px 8px;
+          transition: 0.3s;
+          color: #aaaaaa;
+        }
+
+        input[type=text]:focus + i {
+          color: $main_color;
+        }
+      }
+
+      .field {
+        margin: 12px 0;
+      }
+
+      .buttons {
+        margin: 12px 0;
+      }
+    }
+  }
+}
+
+.pcShowPage {
+  padding-top: 100px;
+  padding-left: 330px;
+  padding-right: 30px;
+  width: auto;
+
+  .container {
+    width: 100%;
+
+    .download_link {
+      ul {
+        list-style: none;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 30px;
+
+        li {
+          width: 120px;
+          text-align: center;
+          border: 1px solid $main_color;
+          height: 38px;
+          line-height: 38px;
+          margin-right: 4px;
+
+          a {
+            text-decoration: none;
+            color: $main_color;
+            font-weight: bold;
+            padding: 5px;
+          }
+        }
+      }
+    }
+
+    .lists_table {
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+
+        tr {
+          border-bottom: solid 1px #eee;
+
+          &:hover {
+            background-color: #d4f0fd;
+          }
+        }
+
+        td,
+        th {
+          text-align: left;
+          padding: 15px 0;
+
+          &.id {
+            width: 10%;
+            text-align: center;
+          }
+
+          &.name {
+            width: 30%;
+          }
+
+          &.domain {
+            width: 40%;
+          }
+
+          &.status {
+            width: 10%;
+          }
+        }
+      }
+    }
+  }
+}

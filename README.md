@@ -22,3 +22,15 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+belongs_toによるバリデーション
+optional: trueで回避
+
+rspec
+FactoryBot
+association
+associationしたいfactoryを書いておかないと参照できない。
+
+associationを呼び出せない
+user.company
+未解決

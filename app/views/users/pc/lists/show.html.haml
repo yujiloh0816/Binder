@@ -1,0 +1,31 @@
+.pcShowPage
+  .container
+    .download_link
+      %ul
+        %li
+          %i.fas.fa-download
+          = link_to "all", users_pc_list_path(params[:id], status: "all", format: "csv")
+        %li
+          %i.fas.fa-download
+          = link_to "good", users_pc_list_path(params[:id], status: "good", format: "csv")
+        %li
+          %i.fas.fa-download
+          = link_to "bad", users_pc_list_path(params[:id], status: "bad", format: "csv")
+
+    .lists_table
+      %table
+        %tr
+          %th.id id
+          %th.name name
+          %th.domain url
+          %th.status status
+        - @inspections.each do |inspection|
+          %tr
+            %td.id
+              = inspection.id
+            %td.name
+              = inspection.company.name
+            %td.domain
+              = link_to inspection.company.domain, inspection.company.domain
+            %td.status
+              = inspection.status

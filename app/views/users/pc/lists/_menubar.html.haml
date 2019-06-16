@@ -1,0 +1,16 @@
+.pcMenubar
+  .container
+    .pcMenubar_contents
+      .pcMenubar_contents_top
+        = link_to 'TOP', users_pc_lists_path, {:class=>'btn-square-shadow'}
+      .pcMenubar_contents_bottom
+        .pcMenubar_contents_lists
+          %ul
+            %li.list_title
+              %i.fas.fa-angle-right.fa-lg.icon<>
+              リスト一覧
+            - @lists.try(:each) do |list|
+              = link_to users_pc_list_path(list) do
+                %li.list
+                  %i.far.fa-file.icon<>
+                    = list.title

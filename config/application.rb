@@ -1,5 +1,6 @@
 require_relative 'boot'
 
+require 'csv'
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -19,6 +20,14 @@ module Binder
     # Rouesを生成しない
     config.generators do |g|
       g.skip_routes true
+    end
+
+    config.generators do |g|
+      g.test_framework :rspec,
+      view_spec: false,
+      helper_spec: false,
+      routing_specs: false,
+      request_specs: false
     end
 
     # 表示時のタイムゾーンをJSTに設定

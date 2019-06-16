@@ -1,0 +1,41 @@
+.pcIndexPage
+  .container
+    %h1.head データの読み込み方法
+    %p
+      CSVファイルでインポートすることが可能です。
+      はじめの一行目は見出しとなります。
+      %br
+      見出しには1列目 domain 2列目 nameと記載してください。
+      下記がサンプルのデータ形式となります。
+    %table
+      %thead
+        %tr
+          %th.name name
+          %th.domain domain
+      %tbody
+        %tr
+          %td.name Binder株式会社
+          %td.domain https://binder.co.jp/
+        %tr
+          %td ハローワールド株式会社
+          %td https://helloworld.co.jp/
+        %tr
+          %td hogehoge株式会社
+          %td https://hogehoge.co.jp/
+
+    = form_with url: users_pc_lists_path, local: true do |f|
+      -# # -# - if @product_import.errors.any?
+      -# #   #error_explanation
+      -# #     %h2 1 prohibited this import from completing:
+      -# #     %ul
+      -# #       - @product_import.errors.full_messages.edo |msg|
+      -# #         %li = msg
+      = fields_for @list do |c|
+        .list_title
+          = c.text_field :title,  placeholder: "タイトル"
+          %i.far.fa-file.icon
+      .field
+        = f.file_field :file
+      .buttons
+        = button_tag :type => "submit", :class =>"btn-square-shadow" do
+          %i.fas.fa-plus.icon import する
