@@ -11,21 +11,17 @@
 #
 
 class Company < ApplicationRecord
+  include Constants
+
   has_many :users
   has_many :inspections
 
-  def self.to_csv(options = {})
-    CSV.generate(options) do |csv|
-      csv << column_names
-      all.each do |company|
-        csv << company.attributes.values_at(*column_names)
-      end
-    end
-  end
+  before_validation :slice_domain
+  validates :domain, uniqueness: true, format: { with: VALID_DOMAIN_REGEX }
 
   def self.import(file, list_id)
     CSV.foreach(file.path, headers: true) do |row|
-      domain = row["domain"].slice(/https?:\/\/[^\/]+\//)
+      domain = row["domain"].slice(VALID_DOMAIN_REGEX)
       company = self.find_or_initialize_by(domain: domain)
       company.attributes = row.to_hash
       company.save!
@@ -35,5 +31,20 @@ class Company < ApplicationRecord
       inspection.save!
     end
   end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |company|
+        csv << company.attributes.values_at(*column_names)
+      end
+    end
+  end
+
+  private
+
+    def slice_domain
+      self.domain = self.domain.slice(VALID_DOMAIN_REGEX)
+    end
 
 end

@@ -1,4 +1,6 @@
 class Users::Pc::ListsController < Users::BaseController
+  before_action :set_lists
+
   def index
     @list = List.new
   end
@@ -15,8 +17,7 @@ class Users::Pc::ListsController < Users::BaseController
 
   def create
     @list = List.new(list_params)
-    # ToDo: 1をcurrent_user.idに変更
-    @list.user_id = 1
+    @list.user_id = current_user.id
     if @list.save
       Company.import(params[:file], @list.id )
       redirect_to users_pc_lists_path, notice: "Company imported"
@@ -29,6 +30,10 @@ class Users::Pc::ListsController < Users::BaseController
 
     def list_params
       params.require(:list).permit(:title)
+    end
+
+    def set_lists
+      @lists = current_user.try(:lists)
     end
 
     # statusによってダウンロード情報を切り分ける

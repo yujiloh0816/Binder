@@ -51,7 +51,7 @@ RSpec.describe User, type: :model do
 
   it "カンパニーとのアソシエーション(belongs_to)の確認" do
     company = FactoryBot.create(:company, name: "Binder株式会社")
-    user = FactoryBot.create(:user, company_id: company)
+    user = FactoryBot.create(:user, company_id: company.id)
     expect(user.company.name).to eq "Binder株式会社"
   end
 end

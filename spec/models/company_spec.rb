@@ -18,35 +18,39 @@ RSpec.describe Company, type: :model do
 
     context "正常系" do
 
-      it "ファイルの形式が正しいこと"
+      xit "Companyモデルの作成時にInspectionモデルも作成されること" do
+        company = FactoryBot.create(:company)
+        list = FactoryBot.create(:list)
 
-      it "Companyモデルの作成時にInspectionモデルも作成されること"
+        inspection = FactoryBot.create(:company)
+      end
 
-      it "domainカラムがdomain以降の文字列を削除し登録されること"
+      it "domainカラムがdomain以降の文字列を削除し登録されること" do
+        company = FactoryBot.create(:company, domain: "https://binder.co.jp/users/")
+        expect(company.domain).to eq "https://binder.co.jp/"
+      end
 
-      it "domainカラムがユニークであること"
+      it "domainのフォーマットが正しいこと" do
+        expect(FactoryBot.build(:company, domain: "https://binder.co.jp/users/")).to be_valid
+      end
 
-      it ""
+
     end
 
     context "異常系" do
-    end
 
-  end
+      it "domainのフォーマットが正しくないこと" do
+        company = FactoryBot.build(:company, domain: "htps://binder.co.jp/users/")
+        company.valid?
+        expect(company.errors[:domain]).to include("is invalid")
+      end
 
-  describe "csvファイルのexport #self.to_csv" do
-
-    context "正常系" do
-      it "ファイルがexportされること"
-      it "一行目のheaderがid,domain,nameであること"
-      it "行頭のheaderを除きレコードの数と行数が同一であるること"
-    end
-
-    context "異常系" do
-      it "csv以外のファイル形式を受けた場合"
-      it "ファイルがexportされること"
-      it "一行目のheaderがid,domain,nameであること"
-      it "行頭のheaderを除きレコードの数と行数が同一であるること"
+      it "domainカラムがユニークであること" do
+        FactoryBot.create(:company, domain: "https://binder.co.jp/")
+        company = FactoryBot.build(:company,domain: "https://binder.co.jp/")
+        company.valid?
+        expect(company.errors[:domain]).to include("has already been taken")
+      end
     end
 
   end

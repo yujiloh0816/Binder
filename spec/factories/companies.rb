@@ -13,7 +13,7 @@
 FactoryBot.define do
   factory :company do
     name { "Binder株式会社" }
-    domain { "https://binder.co.jp" }
+    domain { "https://binder.co.jp/" }
     img_name { "binder.png" }
   end
 end
