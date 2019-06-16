@@ -109,5 +109,69 @@ $main_color: #0E1A2E;
 
   .container {
     width: 100%;
+
+    .download_link {
+      ul {
+        list-style: none;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 30px;
+
+        li {
+          width: 120px;
+          text-align: center;
+          border: 1px solid $main_color;
+          height: 38px;
+          line-height: 38px;
+          margin-right: 4px;
+
+          a {
+            text-decoration: none;
+            color: $main_color;
+            font-weight: bold;
+            padding: 5px;
+          }
+        }
+      }
+    }
+
+    .lists_table {
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+
+        tr {
+          border-bottom: solid 1px #eee;
+
+          &:hover {
+            background-color: #d4f0fd;
+          }
+        }
+
+        td,
+        th {
+          text-align: left;
+          padding: 15px 0;
+
+          &.id {
+            width: 10%;
+            text-align: center;
+          }
+
+          &.name {
+            width: 30%;
+          }
+
+          &.domain {
+            width: 40%;
+          }
+
+          &.status {
+            width: 10%;
+          }
+        }
+      }
+    }
   }
 }
