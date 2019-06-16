@@ -4,13 +4,13 @@
       %ul
         %li
           %i.fas.fa-download
-          = link_to "all", users_pc_list_path(params[:id], format: "csv")
+          = link_to "all", users_pc_list_path(params[:id], status: "all", format: "csv")
         %li
           %i.fas.fa-download
-          = link_to "good", users_pc_list_path(params[:id], format: "csv")
+          = link_to "good", users_pc_list_path(params[:id], status: "good", format: "csv")
         %li
           %i.fas.fa-download
-          = link_to "bad", users_pc_list_path(params[:id], format: "csv")
+          = link_to "bad", users_pc_list_path(params[:id], status: "bad", format: "csv")
 
     .lists_table
       %table

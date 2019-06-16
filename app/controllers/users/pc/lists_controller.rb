@@ -7,26 +7,9 @@ class Users::Pc::ListsController < Users::BaseController
     list = List.find(params[:id])
     @inspections = list.inspections
 
-    # ToDo
-    # リファクタリングする
-    # @inspections.select do |inspection|
-    #   inspection.status == 'good'
-    #   # ToDo
-    #   # parameterでステータスを受け取れるようにする。
-    #   # if params[:status] == 0 || 1 || 2
-    #   #   inspection.status == params[:status]
-    #   # else
-    #   #   render 'show'
-    #   # end
-    # end
-    goods = @inspections.pluck(:company_id)
-    # goods = good_inspections.pluck(:company_id)
-
-    companies = Company.where(id: goods)
-
     respond_to do |format|
       format.html
-      format.csv { send_data companies.to_csv }
+      format.csv {send_data comapnies_with_status.to_csv}
     end
   end
 
@@ -46,6 +29,21 @@ class Users::Pc::ListsController < Users::BaseController
 
     def list_params
       params.require(:list).permit(:title)
+    end
+
+    # statusによってダウンロード情報を切り分ける
+    def comapnies_with_status
+      companies_with_status = @inspections.select do |inspection|
+        if params[:status].in?(["good","bad"])
+          inspection.status == params[:status]
+        elsif params[:status] == "all"
+          inspection.present?
+        else
+          render 'show'
+        end
+      end
+
+      Company.where(id: companies_with_status.pluck(:company_id))
     end
 
 end
