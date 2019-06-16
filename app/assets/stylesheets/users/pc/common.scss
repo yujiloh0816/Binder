@@ -52,27 +52,6 @@ $main_color: #0E1A2E;
     height: calc(100vh - 70px);
 
     &_top {
-      .btn-square-shadow {
-        margin: 40px auto;
-        display: inline-block;
-        padding: 10px 40px;
-        text-decoration: none;
-        background: #668ad8;
-        /*ボタン色*/
-        color: #FFF;
-        border-bottom: solid 3px #627295;
-        border-radius: 50px;
-      }
-
-      &:active {
-        /*ボタンを押したとき*/
-        -webkit-transform: translateY(4px);
-        transform: translateY(3px);
-        /*下に動く*/
-        box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
-        /*影を小さく*/
-        border-bottom: none;
-      }
     }
 
     &_lists ul {
@@ -108,5 +87,31 @@ $main_color: #0E1A2E;
         margin-left: 10px;
       }
     }
+  }
+}
+
+.btn-square-shadow {
+  height: 47px;
+  min-width: 200px;
+  margin: 40px auto;
+  display: inline-block;
+  padding: 10px 40px;
+  text-decoration: none;
+  background: #668ad8;
+  /*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 3px #627295;
+  border-radius: 50px;
+  i {
+    font-size: 16px;
+  }
+  &:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(3px);
+    /*下に動く*/
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+    /*影を小さく*/
+    border-bottom: none;
   }
 }

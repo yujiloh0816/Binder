@@ -6,15 +6,38 @@
 
   .container {
     width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
 
     h1, p {
       text-align: center;
       overflow-wrap: break-word;
     }
+    h1.head {
+      margin: 30px auto;
+    }
 
-    ul {
-      li {
+    table {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      width: 100%;
+      border-collapse: collapse;
+      tr {
+        text-align: left;
+        .name {
+          width: 40%;
+        }
 
+        .domain {
+          width: 60%
+        }
+
+        th, td {
+          border: solid 1px black;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          padding-left: 10px;
+        }
       }
     }
 
