@@ -11,6 +11,7 @@
 
 FactoryBot.define do
   factory :list do
+    title {"人材系"}
     integer { "" }
     string { "" }
   end

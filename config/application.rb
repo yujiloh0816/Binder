@@ -24,10 +24,10 @@ module Binder
 
     config.generators do |g|
       g.test_framework :rspec,
-      fixtures: true,
       view_spec: false,
       helper_spec: false,
-      routing_specs: false
+      routing_specs: false,
+      request_specs: false
     end
 
     # 表示時のタイムゾーンをJSTに設定

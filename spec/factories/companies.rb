@@ -12,8 +12,8 @@
 
 FactoryBot.define do
   factory :company do
-    string { "" }
-    string { "" }
-    string { "" }
+    name { "Binder株式会社" }
+    domain { "https://binder.co.jp" }
+    img_name { "binder.png" }
   end
 end
