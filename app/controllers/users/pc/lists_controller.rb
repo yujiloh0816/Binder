@@ -1,17 +1,23 @@
 class Users::Pc::ListsController < Users::BaseController
   before_action :set_lists
+  before_action :authenticate_user!, only: [:show, :create]
+
 
   def index
     @list = List.new
   end
 
   def show
-    list = List.find(params[:id])
-    @inspections = list.inspections
+      list = List.find(params[:id])
+      @inspections = list.inspections
 
-    respond_to do |format|
-      format.html
-      format.csv {send_data comapnies_with_status.to_csv}
+    if current_user == list.user
+      respond_to do |format|
+        format.html
+        format.csv {send_data comapnies_with_status.to_csv}
+      end
+    else
+      redirect_to users_pc_lists_path
     end
   end
 
@@ -20,7 +26,7 @@ class Users::Pc::ListsController < Users::BaseController
     @list.user_id = current_user.id
     if @list.save
       Company.import(params[:file], @list.id )
-      redirect_to users_pc_lists_path, notice: "Company imported"
+      redirect_to users_pc_list_path(@list), notice: "Company imported"
     else
       render :index
     end
