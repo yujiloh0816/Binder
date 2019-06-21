@@ -1,15 +1,17 @@
 $main_color: #0E1A2E;
 
-
 // Header用
 
 .pcHeader {
   .container {
     // top用のCSSが邪魔するからオーバーライド
-    width: 100%;
+    width: 80%;
+    margin: 0;
+    padding-right: 0;
+    padding-left: 0;
     .pcHeader_contents {
       position: fixed;
-      z-index: 100;
+      z-index: 90;
       width: 100%;
       display: flex;
       justify-content: space-between;
