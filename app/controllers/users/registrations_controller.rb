@@ -52,7 +52,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    users_pc_lists_path
+    request.user_agent.include?('Mobile') ? users_sp_root_path : users_pc_lists_path
   end
 
   # The path used after sign up for inactive accounts.
