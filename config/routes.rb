@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   namespace 'api' do
     namespace 'v1' do
-      resources :companies
+      get 'companies', to: 'companies#check_http_status'
     end
   end
 
