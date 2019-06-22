@@ -15,14 +15,14 @@
     .lists_table
       %table
         %tr
-          %th.id id
+          %th.img_site
           %th.name name
           %th.domain url
           %th.status status
         - @inspections.each do |inspection|
           %tr
-            %td.id
-              = inspection.id
+            %td.img_site
+              = image_tag inspection.company.img_site.url(:thumb)
             %td.name
               = inspection.company.name
             %td.domain

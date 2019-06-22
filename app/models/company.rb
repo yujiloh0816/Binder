@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  domain     :string
-#  img_name   :string
+#  img_site   :string
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -15,6 +15,8 @@ class Company < ApplicationRecord
 
   has_many :users
   has_many :inspections
+
+  mount_uploader :img_site, ImgNameUploader
 
   before_validation :slice_domain
   validates :domain, uniqueness: true, format: { with: VALID_DOMAIN_REGEX }
