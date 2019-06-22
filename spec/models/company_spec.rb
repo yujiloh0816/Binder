@@ -2,12 +2,13 @@
 #
 # Table name: companies
 #
-#  id         :integer          not null, primary key
-#  domain     :string
-#  img_name   :string
-#  name       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :integer          not null, primary key
+#  domain      :string
+#  http_status :integer
+#  img_name    :string
+#  name        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 require 'rails_helper'
