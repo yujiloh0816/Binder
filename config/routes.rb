@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     namespace :sp do
       root to: 'top#index'
       resources :lists, only: [:index, :show]
+      resources :inspections, only: [:create]
     end
   end
 
