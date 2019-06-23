@@ -87,3 +87,5 @@ gem 'jquery-rails'
 gem "font-awesome-sass"
 
 gem 'carrierwave'
+
+gem 'whenever', :require => false

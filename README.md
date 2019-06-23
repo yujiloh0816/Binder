@@ -34,3 +34,7 @@ associationしたいfactoryを書いておかないと参照できない。
 associationを呼び出せない
 user.company
 未解決
+
+例外処理の規則
+
+vagrant ubuntu上でのcron起動
