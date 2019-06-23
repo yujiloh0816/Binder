@@ -1,0 +1,7 @@
+.spListsPage
+  .header リスト一覧
+  .container
+    %ul
+      - @lists.each do |list|
+        %li
+          = link_to list.title, users_sp_list_path(list)

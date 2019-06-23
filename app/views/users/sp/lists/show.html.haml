@@ -1,0 +1,76 @@
+.listsPage
+  -# %nav.nav
+    -# %ul
+    -#   %li.personIcon
+    -#     = link_to
+    -#   %li.appIcon
+    -#     = link_to 'hoge', '#'
+  #tinderslide
+    %ul
+      - @inspections.each do |inspection|
+        %li{"data-inspection_id" => "#{inspection.id}"}
+          .companyName
+            = inspection.company.name
+          = image_tag inspection.company.img_name.url(:thumb)
+          .like
+          .dislike
+    .noCompany 精査完了しました。
+  #actionBtnArea.actions
+    %a.dislike{:href => "#"}
+      %i.fas.fa-times.fa-2x
+    %a.like{:href => "#"}
+      %i.fas.fa-heart.fa-2x
+:javascript
+  // スワイプする企業数の定数を定義
+  var inspectionsNum = #{@inspections.length}
+  var currentInspectionIndex = 0;
+  var postReaction = function (inspection_id, reaction) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        }
+    });
+    $.ajax({
+      type: "POST",
+      url: "#{users_sp_inspections_path}",
+      data: {
+        inspection_id: inspection_id,
+        reaction: reaction,
+      },
+      success: function(j_data){
+        console.log("success")
+      }
+    });
+  }
+  $("#tinderslide").jTinder({
+    onDislike: function (item) {
+      currentInspectionIndex++;
+      checkCompanyNum();
+      var inspection_id = item[0].dataset.inspection_id
+      postReaction(inspection_id, 'bad')
+    },
+    onLike: function (item) {
+      currentInspectionIndex++;
+      checkCompanyNum();
+      var inspection_id = item[0].dataset.inspection_id
+      postReaction(inspection_id, 'good')
+    },
+    animationRevertSpeed: 200,
+    animationSpeed: 400,
+    threshold: 1,
+    likeSelector: '.like',
+    dislikeSelector: '.dislike'
+  });
+  $('.actions .like, .actions .dislike').click(function(e){
+    e.preventDefault();
+    $("#tinderslide").jTinder($(this).attr('class'));
+  });
+
+  function checkCompanyNum() {
+    // スワイプする企業数とスワイプした回数が同じになればaddClassする
+    if (currentInspectionIndex === inspectionsNum){
+      $(".noCompany").addClass("is-active");
+      $("#actionBtnArea").addClass("is-none")
+      return;
+    }
+  }

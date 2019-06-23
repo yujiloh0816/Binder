@@ -30,4 +30,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  THUMBNAIL_SIZE = [400, 400]
+  # mount_uploader :img_name, ImgNameUploader
+
 end

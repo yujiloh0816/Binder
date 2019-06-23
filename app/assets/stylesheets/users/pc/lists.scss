@@ -154,9 +154,13 @@ $main_color: #0E1A2E;
           text-align: left;
           padding: 15px 0;
 
-          &.id {
-            width: 10%;
+          &.img_name {
+            padding: 5px 0;
+            width: 20%;
             text-align: center;
+            img {
+              height: 23%;
+            }
           }
 
           &.name {
