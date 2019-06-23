@@ -31,7 +31,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   THUMBNAIL_SIZE = [400, 400]
-  mount_uploader :img_name, ImgNameUploader
-
+  # mount_uploader :img_name, ImgNameUploader
 
 end
