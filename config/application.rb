@@ -1,5 +1,6 @@
 require_relative 'boot'
 
+require 'net/http'
 require 'csv'
 require 'rails/all'
 

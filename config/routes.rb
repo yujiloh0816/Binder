@@ -18,4 +18,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace 'api' do
+    namespace 'v1' do
+      get 'companies', to: 'companies#check_http_status'
+    end
+  end
+
 end
