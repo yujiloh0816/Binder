@@ -19,7 +19,7 @@
     %a.like{:href => "#"}
       %i.fas.fa-heart.fa-2x
 :javascript
-  // スワイプするユーザー数の定数を定義
+  // スワイプする企業数の定数を定義
   var inspectionsNum = #{@inspections.length}
   var currentInspectionIndex = 0;
   var postReaction = function (inspection_id, reaction) {
@@ -65,7 +65,7 @@
   });
 
   function checkUserNum() {
-    // スワイプするユーザー数とスワイプした回数が同じになればaddClassする
+    // スワイプする企業数とスワイプした回数が同じになればaddClassする
     if (currentInspectionIndex === inspectionsNum){
       $(".noUser").addClass("is-active");
       $("#actionBtnArea").addClass("is-none")
