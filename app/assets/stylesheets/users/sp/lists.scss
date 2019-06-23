@@ -1,3 +1,38 @@
-// Place all the styles related to the users/sp/lists controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// 情報編集
+.spListsPage {
+  .header {
+    padding: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+    background: $main-color;
+    color: $main-text-color;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  ul li {
+    position: relative;
+    list-style-type: none!important;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 15px;
+    line-height: 1.5;
+    vertical-align: middle;
+    color: $main-color;
+    font-weight: bold;
+    border-radius: 15px;
+    border: solid 2px $main-color;
+    &:before{
+      display:inline-block;
+      vertical-align: middle;
+      content:'';
+      width:1em;
+      height: 1em;
+      background: #fff;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+  }
+}

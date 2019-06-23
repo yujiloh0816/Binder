@@ -1,18 +1,20 @@
-.topPage
-  %nav.nav
-    %ul
-      -# %li.personIcon= link_to(content_tag(:i, "", class: 'fas fa-2x fa-user'), user_path(current_user.id))
-      -# %li.appIcon= link_to image_tag("techpit-march-icon.png"), action: "index"
+.listsPage
+  -# %nav.nav
+    -# %ul
+    -#   %li.personIcon
+    -#     = link_to
+    -#   %li.appIcon
+    -#     = link_to 'hoge', '#'
   #tinderslide
     %ul
       - @inspections.each do |inspection|
         %li{"data-inspection_id" => "#{inspection.id}"}
-          .userName
+          .companyName
             = inspection.company.name
           = image_tag inspection.company.img_name.url(:thumb)
           .like
           .dislike
-    .noUser 近くにお相手がいません。
+    .noCompany 精査完了しました。
   #actionBtnArea.actions
     %a.dislike{:href => "#"}
       %i.fas.fa-times.fa-2x
@@ -43,13 +45,13 @@
   $("#tinderslide").jTinder({
     onDislike: function (item) {
       currentInspectionIndex++;
-      checkUserNum();
+      checkCompanyNum();
       var inspection_id = item[0].dataset.inspection_id
       postReaction(inspection_id, 'bad')
     },
     onLike: function (item) {
       currentInspectionIndex++;
-      checkUserNum();
+      checkCompanyNum();
       var inspection_id = item[0].dataset.inspection_id
       postReaction(inspection_id, 'good')
     },
@@ -64,10 +66,10 @@
     $("#tinderslide").jTinder($(this).attr('class'));
   });
 
-  function checkUserNum() {
+  function checkCompanyNum() {
     // スワイプする企業数とスワイプした回数が同じになればaddClassする
     if (currentInspectionIndex === inspectionsNum){
-      $(".noUser").addClass("is-active");
+      $(".noCompany").addClass("is-active");
       $("#actionBtnArea").addClass("is-none")
       return;
     }
