@@ -7,6 +7,6 @@ class Users::Sp::ListsController < ApplicationController
     # どっちの書き方が処理がはやいのか。
     # list = List.find(params[:id])
     # @inspections = list.inspections
-    @inspections = Inspection.where(list_id: params[:id])
+    @inspections = Inspection.where(list_id: params[:id], status: nil)
   end
 end
