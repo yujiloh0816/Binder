@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  domain     :string
-#  img_site   :string
+#  img_name   :string
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

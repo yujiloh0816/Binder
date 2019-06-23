@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_141318) do
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "domain"
-    t.string "img_site"
+    t.string "img_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
