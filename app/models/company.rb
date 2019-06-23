@@ -14,7 +14,7 @@
 class Company < ApplicationRecord
   include Constants
 
-  enum status: { success: 0, error: 1 }
+  enum http_status: { success: 0, error: 1 }
 
   has_many :users
   has_many :inspections
