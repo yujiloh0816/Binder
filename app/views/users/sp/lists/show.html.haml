@@ -1,3 +1,26 @@
-- @inspections.each do |inspection|
-  %p
-    = inspection.company.name
+.topPage
+  %nav.nav
+    %ul
+      -# %li.personIcon= link_to(content_tag(:i, "", class: 'fas fa-2x fa-user'), user_path(current_user.id))
+      -# %li.appIcon= link_to image_tag("techpit-march-icon.png"), action: "index"
+  #tinderslide
+    %ul
+      - @inspections.each do |inspection|
+        %li{"data-inspection_id" => "#{inspection.id}"}
+          .userName
+            = inspection.company.name
+          = image_tag inspection.company.img_name.url(:thumb)
+          .like
+          .dislike
+    .noUser 近くにお相手がいません。
+  #actionBtnArea.actions
+    %a.dislike{:href => "#"}
+      %i.fas.fa-times.fa-2x
+    %a.like{:href => "#"}
+      %i.fas.fa-heart.fa-2x
+:javascript
+  $("#tinderslide").jTinder();
+  $('.actions .like, .actions .dislike').click(function(e){
+  	e.preventDefault();
+  	$("#tinderslide").jTinder($(this).attr('class'));
+  });
