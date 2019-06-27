@@ -16,4 +16,21 @@ class Inspection < ApplicationRecord
   belongs_to :company
   belongs_to :list
 
+  after_update :create_reactions
+
+  private
+
+    def create_reactions
+      current_user = self.list.user
+      self.company.users.each do |user|
+        reaction = Reaction.find_or_initialize_by(
+          from_user_id: current_user.id,
+          to_user_id: user.id
+        )
+        reaction.update_attributes(
+          status: self.status
+        )
+      end
+    end
+
 end

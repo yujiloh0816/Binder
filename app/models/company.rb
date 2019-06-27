@@ -23,6 +23,7 @@ class Company < ApplicationRecord
   mount_uploader :img_name, ImgNameUploader
 
   before_validation :slice_domain
+  
   validates :domain, uniqueness: true, format: { with: VALID_DOMAIN_REGEX }
 
   def self.import(file, list_id)

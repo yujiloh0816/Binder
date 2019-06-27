@@ -1,0 +1,15 @@
+.matchingPage
+  %header.header
+    %i.fas.fa-comments.fa-3x
+    -# .header_logo= link_to image_tag("techpit-march-icon.png"), users_path
+  .container
+    .mt-5
+      .matchingNum
+        = @match_users.size
+        人とマッチングしています
+      %h2.pageTitle マッチングした人一覧
+      .matchingList
+        - @match_users.each do |user|
+          .matchingPerson
+            -# .matchingPerson_img= image_tag user.img_name.url(:thumb)
+            .matchingPerson_name= user.name
