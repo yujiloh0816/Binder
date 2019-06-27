@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :lists, only: [:index, :show]
       resources :inspections, only: [:create]
       resources :matching, only: [:index]
+      resources :chat, only: [:show, :create]
     end
   end
 
