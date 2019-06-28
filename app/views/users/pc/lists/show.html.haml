@@ -19,8 +19,9 @@
           %th.name name
           %th.domain url
           %th.status status
+          %th.http_status access
         - @inspections.each do |inspection|
-          %tr
+          %tr{ :class => inspection.company.http_status }
             %td.img_name
               = image_tag inspection.company.img_name.url(:thumb)
             %td.name
@@ -29,3 +30,5 @@
               = link_to inspection.company.domain, inspection.company.domain
             %td.status
               = inspection.status
+            %td.http_status
+              = inspection.company.http_status

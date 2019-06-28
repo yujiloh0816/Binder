@@ -143,9 +143,14 @@ $main_color: #0E1A2E;
 
         tr {
           border-bottom: solid 1px #eee;
-
           &:hover {
             background-color: #d4f0fd;
+          }
+          &.error {
+            background-color: #fdd4f0;
+            td, a{
+              color: gray;
+            }
           }
         }
 
@@ -162,16 +167,19 @@ $main_color: #0E1A2E;
               height: 48px;
             }
           }
-
           &.name {
             width: 30%;
           }
-
           &.domain {
-            width: 40%;
+            width: 30%;
+            a {
+              display: block;
+            }
           }
-
           &.status {
+            width: 10%;
+          }
+          &.http_status {
             width: 10%;
           }
         }
