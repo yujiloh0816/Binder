@@ -23,6 +23,7 @@ class Company < ApplicationRecord
   mount_uploader :img_name, ImgNameUploader
 
   before_validation :slice_domain
+  before_save :check_http_status
 
   validates :domain, uniqueness: true, format: { with: VALID_DOMAIN_REGEX }
 
@@ -52,6 +53,20 @@ class Company < ApplicationRecord
 
     def slice_domain
       self.domain = self.domain.slice(VALID_DOMAIN_REGEX)
+    end
+
+    def check_http_status
+      uri = URI.parse(self.domain)
+      begin
+        response = Net::HTTP.get_response(uri)
+        if response.code == "200"
+          self.http_status = "success"
+        else
+          self.http_status = "error"
+        end
+      rescue => e
+        self.http_status = "error"
+      end
     end
 
 end
