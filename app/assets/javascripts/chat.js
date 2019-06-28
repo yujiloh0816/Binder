@@ -25,7 +25,7 @@ if(/chat/.test(window.location.pathname)) {
       });
     }
   });
-  // チャット３ トリガー エンターキー
+  // チャット３ トリガー ユーザーからの送信（エンターキー）
   // App.chat_roomのspeakメソッドにdataを渡す
   $(document).on('keypress', '[data-behavior~=room_speaker]',function(event) {
     if (event.keyCode === 13) {

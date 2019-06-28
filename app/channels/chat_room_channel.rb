@@ -1,6 +1,7 @@
 class ChatRoomChannel < ApplicationCable::Channel
 
-  # チャット２ トリガー chat.js App.cable.subscriptions.create  # ブロードキャストでパブリッシュするコンテンツをサブスクライバ側にルーティングする
+  # チャット２ トリガー chat.js App.cable.subscriptions.create
+  # ブロードキャストでパブリッシュするコンテンツをサブスクライバ側にルーティングする
   def subscribed
     stream_for "chat_room_#{params[:room_id]}"
   end
