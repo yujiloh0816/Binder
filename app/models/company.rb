@@ -19,11 +19,11 @@ class Company < ApplicationRecord
   has_many :users
   has_many :inspections
 
-  THUMBNAIL_SIZE = [50, 50]
+  THUMBNAIL_SIZE = [400, 400]
   mount_uploader :img_name, ImgNameUploader
 
   before_validation :slice_domain
-  
+
   validates :domain, uniqueness: true, format: { with: VALID_DOMAIN_REGEX }
 
   def self.import(file, list_id)
