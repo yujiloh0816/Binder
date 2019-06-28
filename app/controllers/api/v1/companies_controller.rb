@@ -1,21 +1,11 @@
 class Api::V1::CompaniesController < ApplicationController
 
-  def check_http_status
+# ToDo apiとしてバッチ処理をすべきか検討
+# callbackでcheck_http_statusを実行
+  def regularly_check_companies
     companies = Company.all
     companies.each do |company|
-      uri = URI.parse(company.domain)
-      begin
-        response = Net::HTTP.get_response(uri)
-        if response.code == "200"
-          company.http_status = "success"
-        else
-          company.http_status = "error"
-        end
-        company.save
-      rescue => e
-        company.http_status = "error"
-        company.save
-      end
+      company.save
     end
     render json: {}
   end

@@ -44,7 +44,7 @@ class Users::Pc::ListsController < Users::BaseController
 
     # statusによってダウンロード情報を切り分ける
     def comapnies_with_status
-      companies_with_status = @inspections.select do |inspection|
+      select_companies = @inspections.select do |inspection|
         if params[:status].in?(["good","bad"])
           inspection.status == params[:status]
         elsif params[:status] == "all"
@@ -54,7 +54,7 @@ class Users::Pc::ListsController < Users::BaseController
         end
       end
 
-      Company.where(id: companies_with_status.pluck(:company_id))
+      Company.where(id: select_companies.pluck(:company_id))
     end
 
 end

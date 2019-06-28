@@ -19,11 +19,12 @@ class Company < ApplicationRecord
   has_many :users
   has_many :inspections
 
-  THUMBNAIL_SIZE = [50, 50]
+  THUMBNAIL_SIZE = [400, 400]
   mount_uploader :img_name, ImgNameUploader
 
   before_validation :slice_domain
-  
+  before_save :check_http_status
+
   validates :domain, uniqueness: true, format: { with: VALID_DOMAIN_REGEX }
 
   def self.import(file, list_id)
@@ -41,9 +42,9 @@ class Company < ApplicationRecord
 
   def self.to_csv
     CSV.generate do |csv|
-      csv << column_names
+      csv << column_names.values_at(0,1,2,4)
       all.each do |company|
-        csv << company.attributes.values_at(*column_names)
+        csv << company.attributes.values_at("id","name","domain","http_status")
       end
     end
   end
@@ -52,6 +53,20 @@ class Company < ApplicationRecord
 
     def slice_domain
       self.domain = self.domain.slice(VALID_DOMAIN_REGEX)
+    end
+
+    def check_http_status
+      uri = URI.parse(self.domain)
+      begin
+        response = Net::HTTP.get_response(uri)
+        if response.code == "200"
+          self.http_status = "success"
+        else
+          self.http_status = "error"
+        end
+      rescue => e
+        self.http_status = "error"
+      end
     end
 
 end

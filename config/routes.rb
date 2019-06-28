@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   namespace 'api' do
     namespace 'v1' do
-      get 'companies', to: 'companies#check_http_status'
+      get 'companies', to: 'companies#regularly_check_companies'
     end
   end
 
