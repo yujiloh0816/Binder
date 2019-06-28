@@ -42,9 +42,9 @@ class Company < ApplicationRecord
 
   def self.to_csv
     CSV.generate do |csv|
-      csv << column_names
+      csv << column_names.values_at(0,1,2,4)
       all.each do |company|
-        csv << company.attributes.values_at(*column_names)
+        csv << company.attributes.values_at("id","name","domain","http_status")
       end
     end
   end
