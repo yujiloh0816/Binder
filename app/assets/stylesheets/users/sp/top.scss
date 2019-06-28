@@ -2,6 +2,9 @@ $main-color: #0E1A2E;
 $main-text-color: #fff;
 
 .loginPage {
+  height: 100vh;
+  background-image: url("/sp_top.jpg");
+  background-size:100% 100%;
   &_contents {
     height: 80vh;
     display: flex;
