@@ -6,6 +6,8 @@
       .chatPartner_name= @chat_room_user.name
   .container
     .messagesArea.messages
+      -# each文をよしなに行う。処理効率も高い
+      -# = render partial: 'chat_messages/chat_message', collection: @chat_messages
       = render @chat_messages
   %form.messageInputForm
     .container
