@@ -30,6 +30,7 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         }
     });
+    // inspections#createにajaxで通信
     $.ajax({
       type: "POST",
       url: "#{users_sp_inspections_path}",

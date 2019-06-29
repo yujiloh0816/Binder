@@ -18,4 +18,5 @@ class Reaction < ApplicationRecord
 
   scope :good_reaction_by, -> (user){ where(from_user: user, status: "good") }
   scope :search_matching_with, -> (user){ where(to_user: user, from_user: good_reaction_by(user).pluck(:to_user_id), status: "good") }
- end
+  
+end
