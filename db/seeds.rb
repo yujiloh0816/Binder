@@ -1,4 +1,5 @@
 ActiveRecord::Base.transaction do
+
   test_user = User.create!(
     name: "taro",
     email: "taro@example.com",
@@ -64,4 +65,5 @@ ActiveRecord::Base.transaction do
     email: "jane@example.com",
     password: "hogehoge"
   )
+  
 end
