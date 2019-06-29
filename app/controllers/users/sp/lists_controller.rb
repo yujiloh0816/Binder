@@ -5,8 +5,10 @@ class Users::Sp::ListsController < ApplicationController
   end
 
   def show
-    # ToDo inspectionのindexに移すべきか？
+    # TODO: inspectionのindexに移すべきか？
     @inspections = Inspection.only_backlog(params[:id])
+    redirect_to users_sp_lists_path if @inspections.blank?
+    # TODO: flash を追加する
   end
 
 end
