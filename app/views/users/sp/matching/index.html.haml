@@ -12,7 +12,7 @@
       %h2.pageTitle マッチングした人一覧
       .matchingList
         - @match_users.each do |user|
-          .matchingCompany= user.company.name
+          .matchingCompany= user.company.name  unless user.company.blank?
           .matchingPerson
             = form_tag :users_sp_chat_index, method: :post do
               %input{:name => "user_id", :type => "hidden", :value => "#{user.id}"}

@@ -24,12 +24,6 @@
           %td https://hogehoge.co.jp/
 
     = form_with url: users_pc_lists_path, local: true do |f|
-      -# # -# - if @product_import.errors.any?
-      -# #   #error_explanation
-      -# #     %h2 1 prohibited this import from completing:
-      -# #     %ul
-      -# #       - @product_import.errors.full_messages.edo |msg|
-      -# #         %li = msg
       = fields_for @list do |c|
         .list_title
           = c.text_field :title,  placeholder: "タイトル"
