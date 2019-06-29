@@ -1,10 +1,12 @@
 .listsPage
-  -# %nav.nav
-    -# %ul
-    -#   %li.personIcon
-    -#     = link_to
-    -#   %li.appIcon
-    -#     = link_to 'hoge', '#'
+  %nav.nav
+    %ul
+      %li.listIcon
+        = link_to content_tag(:i, "", class: 'far fa-2x fa-file'), users_sp_lists_path
+      %li.appIcon
+        = link_to image_tag("/binder-app-icon.png"), "#"
+      %li.messageIcon
+        = link_to content_tag(:i, "", class: 'fas fa-2x fa-comments'), users_sp_matching_index_path
   #tinderslide
     %ul
       - @inspections.each do |inspection|
@@ -30,6 +32,7 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         }
     });
+    // inspections#createにajaxで通信
     $.ajax({
       type: "POST",
       url: "#{users_sp_inspections_path}",

@@ -26,7 +26,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def after_sign_in_path_for(resource)
-     request.user_agent.include?('Mobile') ? users_sp_root_path : users_pc_lists_path
+     request.user_agent.include?('Mobile') ? users_sp_lists_path : users_pc_lists_path
   end
 
 

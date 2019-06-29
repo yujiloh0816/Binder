@@ -1,12 +1,14 @@
 class Users::Sp::ListsController < ApplicationController
+
   def index
     @lists = List.where(user_id: current_user.id)
   end
 
   def show
-    # どっちの書き方が処理がはやいのか。
-    # list = List.find(params[:id])
-    # @inspections = list.inspections
-    @inspections = Inspection.where(list_id: params[:id], status: nil)
+    # TODO: inspectionのindexに移すべきか？
+    @inspections = Inspection.only_backlog(params[:id])
+    redirect_to users_sp_lists_path if @inspections.blank?
+    # TODO: flash を追加する
   end
+
 end
