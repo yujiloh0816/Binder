@@ -1,7 +1,9 @@
 .matchingPage
   %header.header
     %i.fas.fa-comments.fa-3x
-    -# .header_logo= link_to image_tag("techpit-march-icon.png"), users_path
+
+    .header_logo.listIcon
+      = link_to content_tag(:i, "", class: 'far fa-2x fa-file'), users_sp_lists_path
   .container
     .mt-5
       .matchingNum
@@ -10,9 +12,9 @@
       %h2.pageTitle マッチングした人一覧
       .matchingList
         - @match_users.each do |user|
+          .matchingCompany= user.company.name
           .matchingPerson
             = form_tag :users_sp_chat_index, method: :post do
               %input{:name => "user_id", :type => "hidden", :value => "#{user.id}"}
               = submit_tag 'チャットを開く', class: "chatForm_btn"
-            -# .matchingPerson_img= image_tag user.img_name.url(:thumb)
             .matchingPerson_name= user.name

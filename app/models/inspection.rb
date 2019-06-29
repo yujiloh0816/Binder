@@ -18,10 +18,7 @@ class Inspection < ApplicationRecord
 
   after_update :create_reactions
 
-  scope :only_backlog, -> (list_id){ where(list_id: list_id, status: nil)}
-  # ToDo: companyと結合して http_statusを検索したい
-  # companyモデルのscopeになる？
-  # scope :only_backlog, -> (list_id){ includes(:company)where(list_id: list_id, status: nil, company: {http_status: "success"})}
+  scope :only_backlog, -> (list_id){ includes(:company).where(list_id: list_id, status: nil, companies: {http_status: "success"})}
 
   private
 
